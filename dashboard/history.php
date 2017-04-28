@@ -2,7 +2,7 @@
 session_start();
 include('../config.php');
 if(empty($_SESSION['username'])){
-header("location:../login.php");
+header("location:../index.php");
 }
 $last = $_SESSION['username'];
 $sqlupdate = "UPDATE users SET last_activity=now() WHERE username='$last'";
