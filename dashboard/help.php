@@ -82,7 +82,16 @@ $data = mysql_fetch_array($query);
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-body">
+                <legend>Bantuan Penggunaan Sistem</legend>
+                <li>Menu Dashboard merupakan statistik dari penggunaan sistem ini.</li>
+                <li>Menu Form terbagi 2 yakni Form Enkripsi dan Form Dekripsi</li>
+                <li>Untuk Mengenkripsi file pilih pada menu Form -> Enkripsi</li>
+                <li>Untuk Mengdekripsi file pilih pada menu Form -> Dekripsi</li>
+                <li>Menu Daftar List merupakan menu untuk melihat dafar list file yang telah dienkripsi dan didekripsi</li>
+                <li>Menu Tentang merupakan tentang dari sistem ini.</li>
+                <li>Menu Bantuan merupakan menu untuk membantu penggunaan sistem ini.</li>
+              </div>
             </div>
           </div>
         </div>
