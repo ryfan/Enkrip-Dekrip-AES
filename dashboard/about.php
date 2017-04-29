@@ -70,19 +70,25 @@ $data = mysql_fetch_array($query);
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i> Statistik Sistem Enkripsi dan Dekripsi PT. Semanta Mulia Transport</h1>
+            <h1><i class="fa fa-info"></i> Tentang</h1>
           </div>
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="#">Dashboard</a></li>
+              <li><a href="index.php">Dashboard</a></li>
+              <li>Tentang</li>
             </ul>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-body">
+                <legend>Sistem Enkripsi dan Dekripsi PT. Semanta Mulia Transport</legend>
+                <p>Di era ini teknologi semakin maju dan pesat, dimana kerahasiaan data salah satunya yang sangat penting bagi sebuah perusahaan.<br>
+                  Oleh karena itu, maka dibuatlah Sistem Enkripsi dan Dekripsi untuk keamanan file. <br>
+                  Sistem ini merupakan sistem untuk menjaga kerahasiaan data-data penting di PT. Semanta Mulia Transport</p>
+              </div>
             </div>
           </div>
         </div>
