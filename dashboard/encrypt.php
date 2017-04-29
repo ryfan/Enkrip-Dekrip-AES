@@ -70,19 +70,50 @@ $data = mysql_fetch_array($query);
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i> Statistik Sistem Enkripsi dan Dekripsi PT. Semanta Mulia Transport</h1>
+            <h1><i class="fa fa-file"></i> Form Enkripsi PT. Semanta Mulia Transport</h1>
           </div>
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="#">Dashboard</a></li>
+              <li><a href="index.php">Dashboard</a></li>
+              <li>Form Enkripsi</li>
             </ul>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">Load Your Data Here</div>
+              <div class="card-body">
+                <form class="form-horizontal" method="post" action="encrypt-process.php">
+                      <fieldset>
+                        <legend>Form Enkripsi</legend>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="inputFile">File</label>
+                          <div class="col-lg-4">
+                            <input class="form-control" id="inputFile" placeholder="Input File" type="file" name="file" accept="application/msword,application/pdf,application/msexcel" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="inputPassword">Password</label>
+                          <div class="col-lg-4">
+                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="pwdfile">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="textArea">Deskripsi</label>
+                          <div class="col-lg-4">
+                            <textarea class="form-control" id="textArea" rows="3" name="desc" placeholder="Deskripsi"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="textArea"></label>
+                          <div class="col-lg-2">
+                            <input type="submit" name="encrypt_now" value="Enkripsi File" class="form-control btn btn-primary">
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>
+              </div>
             </div>
           </div>
         </div>
