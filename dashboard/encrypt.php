@@ -84,9 +84,15 @@ $data = mysql_fetch_array($query);
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <form class="form-horizontal" method="post" action="encrypt-process.php">
+                <form class="form-horizontal" method="post" action="encrypt-process.php" enctype="multipart/form-data">
                       <fieldset>
                         <legend>Form Enkripsi</legend>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="inputPassword">Tanggal</label>
+                          <div class="col-lg-4">
+                            <input class="form-control" id="inputTgl" type="text" placeholder="Tanggal" name="datenow" value="<?php echo date("Y-m-d");?>" readonly>
+                          </div>
+                        </div>
                         <div class="form-group">
                           <label class="col-lg-2 control-label" for="inputFile">File</label>
                           <div class="col-lg-4">
