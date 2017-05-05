@@ -21,6 +21,7 @@ $data = mysql_fetch_array($query);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../assets/plugins/datatables/css/jquery.dataTables.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -76,7 +77,7 @@ $data = mysql_fetch_array($query);
             <ul class="breadcrumb">
               <li><i class="fa fa-home fa-lg"></i></li>
               <li><a href="index.php">Dashboard</a></li>
-              <li>Form Dekripsi</li>
+              <li>Dekripsi File</li>
             </ul>
           </div>
         </div>
@@ -84,35 +85,63 @@ $data = mysql_fetch_array($query);
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <form class="form-horizontal" method="post" action="decrypt-process.php">
-                      <fieldset>
-                        <legend>Form Dekripsi</legend>
-                        <div class="form-group">
-                          <label class="col-lg-2 control-label" for="inputFile">File</label>
-                          <div class="col-lg-4">
-                            <input class="form-control" id="inputFile" placeholder="Input File" type="file" name="file" required>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-lg-2 control-label" for="inputPassword">Password</label>
-                          <div class="col-lg-4">
-                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="pwdfile">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-lg-2 control-label" for="textArea">Deskripsi</label>
-                          <div class="col-lg-4">
-                            <textarea class="form-control" id="textArea" rows="3" name="desc" placeholder="Deskripsi"></textarea>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-lg-2 control-label" for="textArea"></label>
-                          <div class="col-lg-2">
-                            <input type="submit" name="decrypt_now" value="Dekripsi File" class="form-control btn btn-primary">
-                          </div>
-                        </div>
-                      </fieldset>
-                    </form>
+                <div class="table-responsive">
+                  <table id="file" class="table striped">
+                    <thead>
+                        <tr>
+                          <td width="5%"><strong>No</strong></td>
+                          <td width="30%"><strong>Nama File</strong></td>
+                          <td width="35%"><strong>Path File</strong></td>
+                          <td width="15%"><strong>Status File</strong></td>
+                          <td width="15%"><strong>Aksi</strong></td>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <td width="5%"><strong>No</strong></td>
+                          <td width="30%"><strong>Nama File</strong></td>
+                          <td width="35%"><strong>Path File</strong></td>
+                          <td width="15%"><strong>Status File</strong></td>
+                          <td width="15%"><strong>Aksi</strong></td>
+                        </tr>
+                      </tfoot>
+                        <tbody>
+                        <?php
+                          $i = 1;
+                          $query = mysql_query("SELECT * FROM file");
+                          while ($data = mysql_fetch_array($query)) { ?>
+                          <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $data['file_name']; ?></td>
+                            <td><?php echo $data['file_url']; ?></td>
+                            <td><?php if ($data['status'] == 1) {
+                              echo "Enkripsi";
+                            }elseif ($data['status'] == 2) {
+                              echo "Dekripsi";
+                            }else {
+                              echo "Status Tidak Diketahui";
+                            }
+                             ?></td>
+                            <td>
+                              <?php
+                              $a = $data['id_file'];
+                              if ($data['status'] == 1) {
+                                echo '<a href="decrypt-file.php?id_file='.$a.'" class="btn btn-primary">Dekripsi File</a>';
+                              }elseif ($data['status'] == 2) {
+                                echo '<a href="encrypt.php" class="btn btn-success">Enkripsi File</a>';
+                              }else {
+                                echo '<a href="decrypt.php" class="btn btn-danger">Data Tidak Diketahui</a>';
+                              }
+                               ?>
+
+                             </td>
+                          </tr>
+                          <?php
+                          $i++;
+                        } ?>
+                        </tbody>
+                      </table>
+                </div>
               </div>
             </div>
           </div>
@@ -120,8 +149,21 @@ $data = mysql_fetch_array($query);
       </div>
     </div>
     <script src="../assets/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('#file').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+          "order": [0, "asc"]
+        });
+        });
+        </script>
     <script src="../assets/js/essential-plugins.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/plugins/datatables/js/jquery.dataTables.js"></script>
     <script src="../assets/js/plugins/pace.min.js"></script>
     <script src="../assets/js/main.js"></script>
   </body>
