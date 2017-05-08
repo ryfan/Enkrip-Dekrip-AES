@@ -90,19 +90,21 @@ $data = mysql_fetch_array($query);
                     <thead>
                         <tr>
                           <td width="5%"><strong>No</strong></td>
-                          <td width="30%"><strong>Nama File</strong></td>
-                          <td width="35%"><strong>Path File</strong></td>
+                          <td width="20%"><strong>Nama File Sumber</strong></td>
+                          <td width="20%"><strong>Nama File Enkripsi</strong></td>
+                          <td width="20%"><strong>Path File</strong></td>
                           <td width="15%"><strong>Status File</strong></td>
-                          <td width="15%"><strong>Aksi</strong></td>
+                          <td width="10%"><strong>Aksi</strong></td>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
                           <td width="5%"><strong>No</strong></td>
-                          <td width="30%"><strong>Nama File</strong></td>
-                          <td width="35%"><strong>Path File</strong></td>
+                          <td width="20%"><strong>Nama File</strong></td>
+                          <td width="20%"><strong>Nama File Enkripsi</strong></td>
+                          <td width="20%"><strong>Path File</strong></td>
                           <td width="15%"><strong>Status File</strong></td>
-                          <td width="15%"><strong>Aksi</strong></td>
+                          <td width="10%"><strong>Aksi</strong></td>
                         </tr>
                       </tfoot>
                         <tbody>
@@ -112,7 +114,8 @@ $data = mysql_fetch_array($query);
                           while ($data = mysql_fetch_array($query)) { ?>
                           <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo $data['file_name']; ?></td>
+                            <td><?php echo $data['file_name_source']; ?></td>
+                            <td><?php echo $data['file_name_finish']; ?></td>
                             <td><?php echo $data['file_url']; ?></td>
                             <td><?php if ($data['status'] == 1) {
                               echo "Enkripsi";

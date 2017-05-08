@@ -40,7 +40,7 @@ include "AES.php"; //memasukan file AES
           exit();
       }
 
-      $sql1   = "INSERT INTO file VALUES ('', '$user', '$final_file', '', '$size2', '$key', now(), '1', '$deskripsi')";
+      $sql1   = "INSERT INTO file VALUES ('', '$user', '$final_file', '$finalfile.rda', '', '$size2', '$key', now(), '1', '$deskripsi')";
       $query1  = mysql_query($sql1) or die(mysql_error());
 
       $sql2   = "select * from file where file_url =''";
