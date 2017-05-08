@@ -5,75 +5,84 @@ include "AES.php"; //memasukan file AES
 
   if (isset($_POST['encrypt_now'])) {
       $user 		 = $_SESSION['username'];
-      $key		   = mysql_escape_string(base64_encode($_POST['pwdfile']));
+      $key		   = mysql_escape_string(substr(md5($_POST["pwdfile"]), 0,16));
       $deskripsi = mysql_escape_string($_POST['desc']);
-      $tgl       = mysql_escape_string($_POST['datenow']);
 
-      $file_tmpname = $_FILES['file']['tmp_name'];
-      $file = rand(1000,100000)."-".$_FILES['file']['name'];
-      $new_file_name = strtolower($file);
-      $final_file =str_replace(' ','-',$new_file_name);
-      $file_name = $_FILES['file']['name'];
-      $file_size = $_FILES['file']['size'];
-      $file_type = $_FILES['file']['type'];
-      $info = pathinfo($file_name);
+      $file_tmpname   = $_FILES['file']['tmp_name'];
+      //untuk nama file url
+      $file           = rand(1000,100000)."-".$_FILES['file']['name'];
+      $new_file_name  = strtolower($file);
+      $final_file     = str_replace(' ','-',$new_file_name);
+      //untuk nama file
+      $filename       = rand(1000,100000)."-".pathinfo($_FILES['file']['name'], PATHINFO_FILENAME);
+      $new_filename  = strtolower($filename);
+      $finalfile     = str_replace(' ','-',$new_filename);
+      $size           = filesize($file_tmpname);
+      $size2          = (filesize($file_tmpname))/1024;
+      $info           = pathinfo($final_file );
+      $file_source		= fopen($file_tmpname, 'rb');
+      $ext            = $info["extension"];
 
-      $file_source = fopen($file_tmpname, 'rb');
-      $file_output = fopen('../file_encrypt/' . $final_file, 'wb');
-
-      $a = filesize($file_tmpname);
-      $mod = $a % 16;
-      if ($mod == 0) {
-          $banyak = $a / 16;
-      } else {
-          $banyak = ($a - $mod) / 16;
-          $banyak = $banyak + 1;
+      if( $ext=="docx" || $ext=="doc" || $ext=="txt" || $ext=="pdf" || $ext=="xls" || $ext=="xlsx" || $ext=="ppt" || $ext=="pptx"){
+      }else{
+          echo("<script language='javascript'>
+          window.location.href='encrypt.php';
+          window.alert('Maaf, file yang bisa dienkrip hanya word, excel, text, ppt ataupun pdf.');
+          </script>");
+          exit();
       }
 
-      if ($info['extension'] == 'doc' || $info['extension'] == 'docx' || $info['extension'] == 'xls' || $info['extension'] == 'xlsx' || $info['extension'] == 'excel' || $info['extension'] == 'pdf') {
-        echo "<script language=\"JavaScript\">\n";
-        echo "alert('Ekstension File diterima, Klik OK untuk melanjutkan');\n";
-        echo "</script>";
-        if (is_uploaded_file($file_tmpname)) {
-            ini_set('max_execution_time', -1);
-            ini_set('memory_limit', -1);
-            $hash_password = md5($key);
-            $aes = new AES(substr($hash_password, 0, 16));
+      if($size2>3084){
+          echo("<script language='javascript'>
+          window.location.href='home.php?encrypt';
+          window.alert('Maaf, file tidak bisa lebih besar dari 3MB.');
+          </script>");
+          exit();
+      }
 
-            for ($bawah = 0; $bawah < $banyak; $bawah++) { // 34 bit
-                $data = fread($file_source, 16);
-                if ($mod > 0 && $bawah == ($banyak - 1)) {
-                    $data[15] = $mod; // 2
-                    $cipher = $aes->encrypt($data);
-                    fwrite($file_output, $cipher);
-                } else {
-                    $cipher = $aes->encrypt($data);
-                    fwrite($file_output, $cipher);
-                }
-            }
+      $sql1   = "INSERT INTO file VALUES ('', '$user', '$final_file', '', '$size2', '$key', now(), '1', '$deskripsi')";
+      $query1  = mysql_query($sql1) or die(mysql_error());
 
-            $sql = "INSERT INTO file VALUES('', '$user', '$final_file', 'file_encrypt/$final_file', '$file_size', '$key', '$tgl', '1', '$deskripsi')";
-            $query = mysql_query($sql) or die(mysql_error());
-            if ($query) {
-              echo "<script language=\"JavaScript\">\n";
-              echo "alert('Berhasil mengenkrip.');\n";
-              echo "window.location='encrypt.php'";
-              echo "</script>";
-            } else {
-              echo "<script language=\"JavaScript\">\n";
-              echo "alert('Gagal mengenkrip data.');\n";
-              echo "window.location='encrypt.php'";
-              echo "</script>";
-            }
-        } else {
-            echo "Possible file upload attack : ";
-            echo "filename " . $_FILES['file']['tmp_name'] . ".";
-            echo "filename " . $_FILES['file']['error'] . ".";
-        }
-      } else {
-        echo "<script language=\"JavaScript\">\n";
-        echo "alert('Maaf hanya file Word, Excel dan PDF saja yang diterima');\n";
-        echo "window.location='encrypt.php'";
-        echo "</script>";
+      $sql2   = "select * from file where file_url =''";
+      $query2  = mysql_query($sql2) or die(mysql_error());
+
+      $url   = $finalfile.".rda";
+      $file_url = "file_encrypt/$url";
+
+      $sql3   = "UPDATE file SET file_url ='$file_url' WHERE file_url=''";
+      $query3  = mysql_query($sql3) or die(mysql_error());
+
+      $file_output		= fopen($file_url, 'wb');
+
+      $mod    = $size%16;
+      if($mod==0){
+          $banyak = $size / 16;
+      }else{
+          $banyak = ($size - $mod) / 16;
+          $banyak = $banyak+1;
+      }
+
+      if(is_uploaded_file($file_tmpname)){
+          ini_set('max_execution_time', -1);
+          ini_set('memory_limit', -1);
+          $aes = new AES($key);
+
+         for($bawah=0;$bawah<$banyak;$bawah++){
+             $data    = fread($file_source, 16);
+             $cipher  = $aes->encrypt($data);
+             fwrite($file_output, $cipher);
+         }
+         fclose($file_source);
+         fclose($file_output);
+
+         echo("<script language='javascript'>
+          window.location.href='encrypt.php';
+          window.alert('Enkripsi Berhasil..');
+          </script>");
+      }else{
+         echo("<script language='javascript'>
+          window.location.href='encrypt.php';
+          window.alert('Encrypt file mengalami masalah..');
+          </script>");
       }
   }

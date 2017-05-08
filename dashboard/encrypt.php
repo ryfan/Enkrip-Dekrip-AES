@@ -96,7 +96,7 @@ $data = mysql_fetch_array($query);
                         <div class="form-group">
                           <label class="col-lg-2 control-label" for="inputFile">File</label>
                           <div class="col-lg-4">
-                            <input class="form-control" id="inputFile" placeholder="Input File" type="file" name="file" accept="application/msword,application/pdf,application/msexcel" required>
+                            <input class="form-control" id="inputFile" placeholder="Input File" type="file" name="file" required>
                           </div>
                         </div>
                         <div class="form-group">
