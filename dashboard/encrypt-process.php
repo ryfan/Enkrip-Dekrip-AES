@@ -52,7 +52,7 @@ include "AES.php"; //memasukan file AES
                 }
             }
 
-            $sql = "INSERT INTO file VALUES('', '$user', '$final_file', 'file_encrypt/$final_file', '$file_size', '$key', '$tgl', '0', '$deskripsi')";
+            $sql = "INSERT INTO file VALUES('', '$user', '$final_file', 'file_encrypt/$final_file', '$file_size', '$key', '$tgl', '1', '$deskripsi')";
             $query = mysql_query($sql) or die(mysql_error());
             if ($query) {
               echo "<script language=\"JavaScript\">\n";
