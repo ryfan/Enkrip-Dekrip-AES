@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.5-10.1.21-MariaDB)
-# Date: 2017-05-09 01:40:02
+# Date: 2017-05-09 17:31:50
 # Generator: MySQL-Front 5.2  (Build 5.66)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,13 +30,13 @@ CREATE TABLE `file` (
   `status` enum('1','2') DEFAULT NULL,
   `keterangan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_file`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "file"
 #
 
-INSERT INTO `file` VALUES (47,'ryfan','43128-data-pt-semanta.docx','88644-data-pt-semanta.rda','file_encrypt/88644-data-pt-semanta.rda',11.3555,'7e15a9c7940b0507','2017-05-09 01:38:53','1','File PT Semanta Mulia Transport');
+INSERT INTO `file` VALUES (50,'ryfan','23979-surat-permohonan-domain-ac.id.doc','58787-surat-permohonan-domain-ac.id.rda','file_encrypt/58787-surat-permohonan-domain-ac.id.rda',28,'79e779bb0f878043','2017-05-09 17:27:53','2','Surat Permohonan Domain .AC.ID');
 
 #
 # Source for table "users"
@@ -57,7 +57,7 @@ CREATE TABLE `users` (
 # Data for table "users"
 #
 
-INSERT INTO `users` VALUES ('ryfan','79e779bb0f878043e7c396229df8d5f1','Ryfan Aditya','Project Manager','2017-04-28 15:48:55','2017-05-09 01:39:51');
+INSERT INTO `users` VALUES ('ryfan','79e779bb0f878043e7c396229df8d5f1','Ryfan Aditya','Project Manager','2017-04-28 15:48:55','2017-05-09 17:30:58');
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
