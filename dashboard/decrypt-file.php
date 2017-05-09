@@ -91,7 +91,7 @@ $data = mysql_fetch_array($query);
                 $data2 = mysql_fetch_array($query);
                 ?>
                 <h3 align="center">Dekripsi File <i style="color:blue"><?php echo $data2['file_name_finish'] ?></i></h3><br>
-                <form class="form-horizontal" method="post" action="decrypt-process.php" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" action="decrypt-process.php">
                 <div class="table-responsive">
                   <table class="table striped">
                        <tr>
@@ -124,6 +124,7 @@ $data = mysql_fetch_array($query);
                          <td></td>
                          <td>
                            <div class="col-md-6">
+                            <input type="hidden" name="fileid" value="<?php echo $data2['id_file'];?>">
                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="pwdfile" required><br>
                            <input type="submit" name="decrypt_now" value="Dekripsi File" class="form-control btn btn-primary">
                          </div>

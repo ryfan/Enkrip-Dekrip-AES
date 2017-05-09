@@ -92,7 +92,7 @@ $data = mysql_fetch_array($query);
                           <td><strong>ID File</strong></td>
                           <td><strong>Username</strong></td>
                           <td><strong>Nama File</strong></td>
-                          <td><strong>Path File</strong></td>
+                          <td><strong>Nama File Enkripsi</strong></td>
                           <td><strong>Ukuran File</strong></td>
                           <td><strong>Tanggal</strong></td>
                           <td><strong>Status</strong></td>
@@ -102,8 +102,8 @@ $data = mysql_fetch_array($query);
                         <tr>
                           <td><strong>ID File</strong></td>
                           <td><strong>Username</strong></td>
-                          <td><strong>Nama File</strong></td>
-                          <td><strong>Path File</strong></td>
+                          <td><strong>Nama File Sumber</strong></td>
+                          <td><strong>Nama File Enkripsi</strong></td>
                           <td><strong>Ukuran File</strong></td>
                           <td><strong>Tanggal</strong></td>
                           <td><strong>Status</strong></td>
@@ -116,16 +116,16 @@ $data = mysql_fetch_array($query);
                           <tr>
                             <td><?php echo $data['id_file']; ?></td>
                             <td><?php echo $data['username']; ?></td>
-                            <td><?php echo $data['file_name']; ?></td>
-                            <td><?php echo $data['file_url']; ?></td>
+                            <td><?php echo $data['file_name_source']; ?></td>
+                            <td><?php echo $data['file_name_finish']; ?></td>
                             <td><?php echo $data['file_size']; ?> KB</td>
                             <td><?php echo $data['tgl_upload']; ?></td>
                             <td><?php if ($data['status'] == 1) {
-                              echo "Enkripsi";
+                              echo "<span class='btn btn-success'>Terenkripsi</span>";
                             }elseif ($data['status'] == 2) {
-                              echo "Dekripsi";
+                              echo "<span class='btn btn-info'>Sudah Didekripsi</span>";
                             }else {
-                              echo "Status Tidak Diketahui";
+                              echo "<span class='btn btn-danger'>Status Tidak Diketahui</span>";
                             }
                              ?></td>
                           </tr>

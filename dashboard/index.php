@@ -86,25 +86,37 @@ $data = mysql_fetch_array($query);
                         <div class="row">
                   <div class="col-md-4">
                     <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+                      <?php
+      								$query = mysql_query("SELECT count(*) totaluser FROM users");
+      								$datauser = mysql_fetch_array($query);
+								      ?>
                       <div class="info">
                         <h4>Users</h4>
-                        <p> <b>5</b></p>
+                        <p> <b><?php echo $datauser['totaluser']; ?></b></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="widget-small info"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
+                      <?php
+      								$query = mysql_query("SELECT count(*) totalencrypt FROM file WHERE status='1'");
+      								$dataencrypt = mysql_fetch_array($query);
+								      ?>
                       <div class="info">
                         <h4>Enkripsi</h4>
-                        <p> <b>25</b></p>
+                        <p> <b><?php echo $dataencrypt['totalencrypt']; ?></b></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="widget-small warning"><i class="icon fa fa-files-o fa-3x"></i>
                       <div class="info">
+                        <?php
+        								$query = mysql_query("SELECT count(*) totaldecrypt FROM file WHERE status='2'");
+        								$datadecrypt = mysql_fetch_array($query);
+  								      ?>
                         <h4>Dekripsi</h4>
-                        <p> <b>10</b></p>
+                        <p> <b><?php echo $datadecrypt['totaldecrypt']; ?></b></p>
                       </div>
                     </div>
                   </div>
