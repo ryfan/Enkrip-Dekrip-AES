@@ -16,7 +16,7 @@ $query = mysql_query("SELECT fullname,job_title,last_activity FROM users WHERE u
 $data = mysql_fetch_array($query);
 ?>
   <head>
-    <title>Halo, <?php echo $data['fullname']; ?> - Sistem Enkripsi dan Dekripsi PT Semanta Mulia Transport</title>
+    <title>Halo, <?php echo $data['fullname']; ?> - Aplikasi Enkripsi dan Dekripsi PT Semanta Mulia Transport</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

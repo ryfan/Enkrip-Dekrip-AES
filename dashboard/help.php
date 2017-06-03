@@ -16,7 +16,7 @@ $query = mysql_query("SELECT fullname,job_title,last_activity FROM users WHERE u
 $data = mysql_fetch_array($query);
 ?>
   <head>
-    <title>Halo, <?php echo $data['fullname']; ?> - Sistem Enkripsi dan Dekripsi PT Semanta Mulia Transport</title>
+    <title>Halo, <?php echo $data['fullname']; ?> - Aplikasi Enkripsi dan Dekripsi PT Semanta Mulia Transport</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,12 +70,12 @@ $data = mysql_fetch_array($query);
       <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i> Statistik Sistem Enkripsi dan Dekripsi PT. Semanta Mulia Transport</h1>
+            <h1><i class="fa fa-dashboard"></i> Statistik Aplikasi Enkripsi dan Dekripsi PT. Semanta Mulia Transport</h1>
           </div>
           <div>
             <ul class="breadcrumb">
               <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Bantuan</a></li>
             </ul>
           </div>
         </div>
@@ -83,14 +83,14 @@ $data = mysql_fetch_array($query);
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <legend>Bantuan Penggunaan Sistem</legend>
-                <li>Menu Dashboard merupakan statistik dari penggunaan sistem ini.</li>
+                <legend>Bantuan Penggunaan Aplikasi</legend>
+                <li>Menu Dashboard merupakan statistik dari penggunaan Aplikasi ini.</li>
                 <li>Menu Form terbagi 2 yakni Form Enkripsi dan Form Dekripsi</li>
                 <li>Untuk Mengenkripsi file pilih pada menu Form -> Enkripsi</li>
                 <li>Untuk Mengdekripsi file pilih pada menu Form -> Dekripsi</li>
                 <li>Menu Daftar List merupakan menu untuk melihat dafar list file yang telah dienkripsi dan didekripsi</li>
-                <li>Menu Tentang merupakan tentang dari sistem ini.</li>
-                <li>Menu Bantuan merupakan menu untuk membantu penggunaan sistem ini.</li>
+                <li>Menu Tentang merupakan tentang dari Aplikasi ini.</li>
+                <li>Menu Bantuan merupakan menu untuk membantu penggunaan Aplikasi ini.</li>
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ $query = mysql_query("SELECT fullname,job_title,last_activity FROM users WHERE u
 $data = mysql_fetch_array($query);
 ?>
   <head>
-    <title>Halo, <?php echo $data['fullname']; ?> - Sistem Enkripsi dan Dekripsi PT Semanta Mulia Transport</title>
+    <title>Halo, <?php echo $data['fullname']; ?> - Aplikasi Enkripsi dan Dekripsi PT Semanta Mulia Transport</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,10 +84,10 @@ $data = mysql_fetch_array($query);
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <legend>Sistem Enkripsi dan Dekripsi PT. Semanta Mulia Transport</legend>
+                <legend>Aplikasi Enkripsi dan Dekripsi PT. Semanta Mulia Transport</legend>
                 <p>Di era ini teknologi semakin maju dan pesat, dimana kerahasiaan data salah satunya yang sangat penting bagi sebuah perusahaan.<br>
-                  Oleh karena itu, maka dibuatlah Sistem Enkripsi dan Dekripsi untuk keamanan file. <br>
-                  Sistem ini merupakan sistem untuk menjaga kerahasiaan data-data penting di PT. Semanta Mulia Transport</p>
+                  Oleh karena itu, maka dibuatlah Aplikasi Enkripsi dan Dekripsi untuk keamanan file. <br>
+                  Aplikasi ini merupakan Aplikasi untuk menjaga kerahasiaan data-data penting di PT. Semanta Mulia Transport</p>
               </div>
             </div>
           </div>
