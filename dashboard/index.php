@@ -55,12 +55,24 @@ $data = mysql_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-            <li class="treeview"><a href="#"><i class="fa fa-file-o"></i><span>File</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="encrypt.php"><i class="fa fa-circle-o"></i> Enkripsi</a></li>
-                <li><a href="decrypt.php"><i class="fa fa-circle-o"></i> Dekripsi</a></li>
-              </ul>
-            </li>
+            <?php
+            $v = $_SESSION['username'];
+            $query = mysql_query("SELECT * FROM users WHERE username='$v'");
+            $users = mysql_fetch_array($query);
+            if ($users['status'] == 1) {
+              echo '<li class="treeview"><a href="#"><i class="fa fa-file-o"></i><span>File</span><i class="fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                  <li><a href="encrypt.php"><i class="fa fa-circle-o"></i> Enkripsi</a></li>
+                  <li><a href="decrypt.php"><i class="fa fa-circle-o"></i> Dekripsi</a></li>
+                </ul>
+              </li>';
+            }elseif ($users['status'] == 2) {
+              echo "";
+            }else {
+              echo "";
+            }
+             ?>
+
             <li><a href="history.php"><i class="fa fa-list-alt"></i><span>Daftar List</span></a></li>
             <li><a href="about.php"><i class="fa fa-info"></i><span>Tentang</span></a></li>
             <li><a href="help.php"><i class="fa fa-question-circle"></i><span>Bantuan</span></a></li>

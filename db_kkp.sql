@@ -1,6 +1,6 @@
 ﻿# Host: localhost  (Version 5.5.5-10.1.21-MariaDB)
-# Date: 2017-07-14 16:09:20
-# Generator: MySQL-Front 6.0  (Build 1.194)
+# Date: 2017-09-22 19:31:22
+# Generator: MySQL-Front 6.0  (Build 2.20)
 
 
 #
@@ -20,7 +20,7 @@ CREATE TABLE `file` (
   `status` enum('1','2') DEFAULT NULL,
   `keterangan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_file`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 #
 # Data for table "file"
